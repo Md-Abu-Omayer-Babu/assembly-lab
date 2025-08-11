@@ -2,49 +2,33 @@
 .stack 100h
 .code
 main proc
-
-    ; Read first character into AL
            mov ah, 1h
            int 21h
-           mov bl, al     ; store first char in BL
-    
-    ; Read second character into AL
+           mov bl, al
            mov ah, 1h
            int 21h
-           mov bh, al     ; store second char in BH
-    
-    ; Compare BL and BH
+           mov bh, al
            cmp bl, bh
-           jbe First      ; if BL <= BH, jump to First
-           jmp Second     ; else jump to Second
-    
+           jbe First
+           jmp Second
     First: 
-    ; Print BL first
            mov ah, 2h
            mov dl, bl
            int 21h
-    
-    ; Print BH second
            mov ah, 2h
            mov dl, bh
            int 21h
-           jmp exit       ; jump to exit
-    
+           jmp exit
     Second:
-    ; Print BH first
            mov ah, 2h
            mov dl, bh
            int 21h
-    
-    ; Print BL second
            mov ah, 2h
            mov dl, bl
            int 21h
-           jmp exit       ; jump to exit
-    
+           jmp exit
     exit:  
-           mov ah, 4Ch    ; terminate program
+           mov ah, 4Ch
            int 21h
-
 main endp
 end main

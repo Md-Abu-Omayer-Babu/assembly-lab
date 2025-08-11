@@ -11,7 +11,6 @@ main proc
          lea dx, msg
          int 21h
 
-    ; Exit
          mov ah, 4Ch
          int 21h
 
